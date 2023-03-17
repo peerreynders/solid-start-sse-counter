@@ -189,4 +189,15 @@ function solidStartSseSupport(
 	return next();
 }
 
+// Want to protect middleware from tree shaking
+declare global {
+	var __no_tree_shaking: Record<string, unknown> | undefined;
+}
+
+if (globalThis.__no_tree_shaking) {
+	globalThis.__no_tree_shaking.solidStartSseSupport = solidStartSseSupport;
+} else {
+	globalThis.__no_tree_shaking = { solidStartSseSupport };
+}
+
 export { eventStream, listen, solidStartSseSupport };
