@@ -1,3 +1,4 @@
+// file: src/components/sse-counter.tsx
 import {
 	createContext,
 	createEffect,
@@ -41,7 +42,9 @@ function startServerTime() {
 	if (started) return;
 
 	const handle = server$(connectServerSource);
-	const href: string = handle.url;
+	const href = handle.url;
+
+  // Runs only once but also registers for clean up
 	createEffect(() => {
 		const onMessage = (message: MessageEvent<string>) => {
 			setServerTime(message.data);
