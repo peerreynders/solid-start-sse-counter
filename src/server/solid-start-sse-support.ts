@@ -191,6 +191,7 @@ function solidStartSseSupport(
 
 // Want to protect middleware from tree shaking
 declare global {
+	// eslint-disable-next-line no-var
 	var __no_tree_shaking: Record<string, unknown> | undefined;
 }
 

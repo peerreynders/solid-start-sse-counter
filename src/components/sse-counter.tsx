@@ -44,7 +44,7 @@ function startServerTime() {
 	const handle = server$(connectServerSource);
 	const href = handle.url;
 
-  // Runs only once but also registers for clean up
+	// Runs only once but also registers for clean up
 	createEffect(() => {
 		const onMessage = (message: MessageEvent<string>) => {
 			setServerTime(message.data);
